@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>时间插件</title>
+    <link rel="stylesheet" href="./laydate-master-141126210932/skins/danlan/laydate.css">
+</head>
+<body>
+    <div id="time">
+        <input type="text" class="input-dateTime">
+        <input type="text" class="input-dateTime">
+        <input type="text" class="input-dateTime">
+    </div>
+    <script src="./jquery.js"></script>
+    <script src="./laydate-master-141126210932/laydate.js"></script>
+    <script src="./laydate-master-141126210932/laydate.dev.js"></script>
+    <script>
+    
+    /*时间控件，要求该控件拥有.input-dateTime类名，并且该控件的祖先元素至少有一个包含id属性 */
+        $.fn.laydate = function (callback) {
+        	var $component = $(this);
+	        var $parentHaveId = $component.parents("[id]");
+	        var elemNode = '#' + $parentHaveId.attr('id') + ' .input-dateTime';
+	        laydate({
+	        	elem: elemNode,
+	        	choose: typeof(callback)==='function'?callback:''   //此处放置选定时间后的回调函数
+        		})
+        }  
+        
+        
+        $('.input-dateTime').laydate(function(){   //使用laydate插件
+            alert('hello world')
+        })
+        
+    </script>
+</body>
+</html>
